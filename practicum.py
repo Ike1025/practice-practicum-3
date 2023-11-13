@@ -24,44 +24,44 @@ def euclidean_distance(a,b):
     return distance
 
 
+def alphanumeric_key(e):
+    return ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"][int(str(e)[0])]
+
+
+def digit_sort(e):
+    return -10000*len(str(e))+e
+
 def data_sorter(data):
-    alpha_num = {0:"zero", 1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six", 7:"seven", 8:"eight", 9:"nine"}
-    sorted = False
-    lst = data[:]
-    lst1 = data[:]
-    lst2 = lst[:]
+    
+    
+    lst = sorted(data, key=alphanumeric_key)
+    lst1 = sorted(data, key=digit_sort)
 
-    while sorted == False:
-        sorted = True
-        for i in range(len(lst)):
-            if i == 0:
-                continue
-            if alpha_num[int(str(lst[i])[0])] < alpha_num[int(str(lst[i-1])[0])]:
-                switch = lst[i]
-                lst[i] = lst[i-1]
-                lst[i-1] = switch
-                sorted = False
 
-    sorted = False
-    while sorted == False:
-        sorted = True
-        for i in range(len(lst1)):
-            if i == 0:
-                continue
 
-            if len(str(lst1[i])) > len(str(lst1[i-1])):
-                switch = lst1[i]
-                lst1[i] = lst1[i-1]
-                lst1[i-1] = switch
-                sorted = False
+    
 
-            elif len(str(lst1[i])) == len(str(lst1[i-1])):
-                if lst1[i] < lst1[i-1]:
-                    switch = lst1[i]
-                    lst1[i] = lst1[i-1]
-                    lst1[i-1] = switch
-                    sorted = False
 
+
+
+
+
+
+    # alpha_num = {0:"zero", 1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six", 7:"seven", 8:"eight", 9:"nine"}
+    # sorted = False
+    # lst = data[:]
+    # lst1 = data[:]
+
+    # while sorted == False:
+    #     sorted = True
+    #     for i in range(len(lst)):
+    #         if i == 0:
+    #             continue
+    #         if alpha_num[int(str(lst[i])[0])] < alpha_num[int(str(lst[i-1])[0])]:
+    #             switch = lst[i]
+    #             lst[i] = lst[i-1]
+    #             lst[i-1] = switch
+    #             sorted = False
 
     # sorted = False
     # while sorted == False:
@@ -69,47 +69,39 @@ def data_sorter(data):
     #     for i in range(len(lst1)):
     #         if i == 0:
     #             continue
-    #         if int(str(lst1[i])[0]) < int(str(lst1[i-1])[0]):
+
+    #         if len(str(lst1[i])) > len(str(lst1[i-1])):
     #             switch = lst1[i]
     #             lst1[i] = lst1[i-1]
     #             lst1[i-1] = switch
     #             sorted = False
-    #         elif int(str(lst1[i])[0]) == int(str(lst1[i-1])[0]):
-    #             for j in range(5):
-    #                 if j == 0:
-    #                     continue
 
-    #                 try:
-    #                     x = int(str(lst1[i])[j])
-    #                     y = int(str(lst1[i-1])[j])
-    #                     if x < y:
-    #                         switch = lst1[i]
-    #                         lst1[i] = lst1[i-1]
-    #                         lst1[i-1] = switch
-    #                         sorted = False
+    #         elif len(str(lst1[i])) == len(str(lst1[i-1])):
+    #             if lst1[i] < lst1[i-1]:
+    #                 switch = lst1[i]
+    #                 lst1[i] = lst1[i-1]
+    #                 lst1[i-1] = switch
+    #                 sorted = False
 
-    #                 except:
-    #                     if len(str(lst1[i])) < len(str(lst1[i-1])):
-    #                         switch = lst1[i]
-    #                         lst1[i] = lst1[i-1]
-    #                         lst1[i-1] = switch
-    #                         sorted = False
+
+    
 
         
     return lst, lst1
 
 
 def phonetic_translation(a_str):
-    alpha_lst = []
-    for chr in a_str:
-        chr = chr.upper()
-        for item in PHONETIC_ALPHABET:
-            if chr == item[0]:
-                alpha_lst.append(item)
+    # alpha_lst = []
+    # for chr in a_str:
+    #     chr = chr.upper()
+    #     for item in PHONETIC_ALPHABET:
+    #         if chr == item[0]:
+    #             alpha_lst.append(item)
 
 
-    return alpha_lst
-
+    # return alpha_lst
+    
+    return [PHONETIC_ALPHABET[ord(char)-97] for char in a_str.lower() if char in "abcdefghijklmnopqrstuvwxyz"]
 
 def words_by_letter(a_str):
     unique_words = {}
@@ -126,6 +118,7 @@ def words_by_letter(a_str):
 
     return unique_words
 
+    
 
 
 

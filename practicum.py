@@ -24,10 +24,11 @@ def euclidean_distance(a,b):
     return distance
 
 
-def data_sorter(lst):
+def data_sorter(data):
     alpha_num = {0:"zero", 1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six", 7:"seven", 8:"eight", 9:"nine"}
     sorted = False
-    lst1 = lst[:]
+    lst = data[:]
+    lst1 = data[:]
     lst2 = lst[:]
 
     while sorted == False:
@@ -41,36 +42,58 @@ def data_sorter(lst):
                 lst[i-1] = switch
                 sorted = False
 
-
     sorted = False
     while sorted == False:
         sorted = True
         for i in range(len(lst1)):
             if i == 0:
                 continue
-            if int(str(lst1[i])[0]) < int(str(lst1[i-1])[0]):
+
+            if len(str(lst1[i])) > len(str(lst1[i-1])):
                 switch = lst1[i]
                 lst1[i] = lst1[i-1]
                 lst1[i-1] = switch
                 sorted = False
-            elif int(str(lst1[i])[0]) == int(str(lst1[i-1])[0]):
-                for j in range(len(str(lst[i]))):
-                    if j == 0:
-                        continue
 
-                    try:
-                        if int(str(lst1[i])[j]) < int(str(lst[i])[j-1]):
-                            switch = lst1[i]
-                            lst1[i] = lst1[i-1]
-                            lst1[i-1] = switch
-                            sorted = False
+            elif len(str(lst1[i])) == len(str(lst1[i-1])):
+                if lst1[i] < lst1[i-1]:
+                    switch = lst1[i]
+                    lst1[i] = lst1[i-1]
+                    lst1[i-1] = switch
+                    sorted = False
 
-                    except:
-                        if len(str(lst1[i])) < len(str(lst[i-1])):
-                            switch = lst1[i]
-                            lst1[i] = lst1[i-1]
-                            lst1[i-1] = switch
-                            sorted = False
+
+    # sorted = False
+    # while sorted == False:
+    #     sorted = True
+    #     for i in range(len(lst1)):
+    #         if i == 0:
+    #             continue
+    #         if int(str(lst1[i])[0]) < int(str(lst1[i-1])[0]):
+    #             switch = lst1[i]
+    #             lst1[i] = lst1[i-1]
+    #             lst1[i-1] = switch
+    #             sorted = False
+    #         elif int(str(lst1[i])[0]) == int(str(lst1[i-1])[0]):
+    #             for j in range(5):
+    #                 if j == 0:
+    #                     continue
+
+    #                 try:
+    #                     x = int(str(lst1[i])[j])
+    #                     y = int(str(lst1[i-1])[j])
+    #                     if x < y:
+    #                         switch = lst1[i]
+    #                         lst1[i] = lst1[i-1]
+    #                         lst1[i-1] = switch
+    #                         sorted = False
+
+    #                 except:
+    #                     if len(str(lst1[i])) < len(str(lst1[i-1])):
+    #                         switch = lst1[i]
+    #                         lst1[i] = lst1[i-1]
+    #                         lst1[i-1] = switch
+    #                         sorted = False
 
         
     return lst, lst1
@@ -88,15 +111,33 @@ def phonetic_translation(a_str):
     return alpha_lst
 
 
+def words_by_letter(a_str):
+    unique_words = {}
+
+    a_str = a_str.split()
+
+    for word in a_str:
+        word = word.lower()
+        if word[0] not in unique_words.keys():
+            unique_words[word[0]] = {word}
+        
+        else:
+            unique_words[word[0]].add(word)
+
+    return unique_words
+
+
+
 
 
 def main():
     # you may use this function to manually test your code if you feel the need
     # to do so.
     print(euclidean_distance([1,2],[1,5]))
-    print(data_sorter([6,55,45,41,3,2,1]))
+    print(data_sorter([10,3000,5,20,10,3,100,3000,3120,100]))
     print(phonetic_translation("alpha"))
-    
+    print(words_by_letter("The cat in the hat is back with a bright blue bat out in " \
+        "the back"))
 
 if __name__ == "__main__":
     main()

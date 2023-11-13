@@ -10,54 +10,54 @@ comment/uncomment it.
 import math
 from practicum import * #this imports all functions directly here so you don't need to call practicum. before the function.
 
-# # EUCLIDEAN DISTANCE
-# def test_euclidean_distance_none():
-#     # setup
-#     point1 = (1, 2)
-#     point2 = (3, 4, 5)
-#     expected = None
+# EUCLIDEAN DISTANCE
+def test_euclidean_distance_none():
+    # setup
+    point1 = (1, 2)
+    point2 = (3, 4, 5)
+    expected = None
 
-#     # invoke
-#     actual = euclidean_distance(point1, point2)
+    # invoke
+    actual = euclidean_distance(point1, point2)
 
-#     # analyze
-#     assert expected == actual
+    # analyze
+    assert expected == actual
 
-# def test_euclidian_distance_1D():
-#     # setup
-#     point1 = [1]
-#     point2 = [5]
-#     expected = 4
+def test_euclidian_distance_1D():
+    # setup
+    point1 = [1]
+    point2 = [5]
+    expected = 4
 
-#     # invoke
-#     actual = euclidean_distance(point1, point2)
+    # invoke
+    actual = euclidean_distance(point1, point2)
 
-#     # analyze
-#     assert expected == actual
+    # analyze
+    assert expected == actual
 
-# def test_euclidian_distance_2D():
-#     # setup
-#     point1 = (1, 2)
-#     point2 = (4, 6)
-#     expected = 5
+def test_euclidian_distance_2D():
+    # setup
+    point1 = (1, 2)
+    point2 = (4, 6)
+    expected = 5
 
-#     # invoke
-#     actual = euclidean_distance(point1, point2)
+    # invoke
+    actual = euclidean_distance(point1, point2)
 
-#     # analyze
-#     assert expected == actual
+    # analyze
+    assert expected == actual
 
-# def test_euclidian_distance_5D():
-#     # setup
-#     point1 = range(1, 6)
-#     point2 = range(5, 14, 2)
-#     expected = 13.784048752090222
+def test_euclidian_distance_5D():
+    # setup
+    point1 = range(1, 6)
+    point2 = range(5, 14, 2)
+    expected = 13.784048752090222
 
-#     # invoke
-#     actual = euclidean_distance(point1, point2)
+    # invoke
+    actual = euclidean_distance(point1, point2)
 
-#     # analyze
-#     assert math.isclose(expected, actual)
+    # analyze
+    assert math.isclose(expected, actual)
 
 
 
